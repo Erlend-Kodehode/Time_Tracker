@@ -1,0 +1,24 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  height: 100vh;
+}
+#container {
+  display: grid;
+  grid-template: repeat(2, 1fr) / repeat(4, 1fr);
+  row-gap: 5.8%;
+  column-gap: 2.7%;
+  width: 77%;
+  aspect-ratio: 2.14;
+}
+
+.box {
+  background-color: black;
+}
+
+#profile {
+  grid-row: 1 / span 2;
+}
