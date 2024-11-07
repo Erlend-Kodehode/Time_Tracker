@@ -36,3 +36,24 @@ const activities = [
     monthly: { current: 7, previous: 11 },
   },
 ];
+
+const menu = document.querySelector("#menu");
+const menuItems = Array.from(menu.children);
+let activeItem = 0;
+
+menuItems.forEach((e, i) => {
+  if (i === activeItem) e.classList.toggle("inActive");
+  e.addEventListener("mouseenter", () => {
+    if (i === activeItem) return;
+    e.classList.toggle("inActive");
+  });
+  e.addEventListener("mouseleave", () => {
+    if (i === activeItem) return;
+    e.classList.toggle("inActive");
+  });
+  e.addEventListener("click", () => {
+    if (i === activeItem) return;
+    menuItems[activeItem].classList.toggle("inActive");
+    activeItem = i;
+  });
+});

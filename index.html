@@ -3,14 +3,44 @@
   <head>
     <link rel="stylesheet" href="style.css" />
     <script src="app.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+      rel="stylesheet"
+    />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Time Tracker</title>
   </head>
-  <body>
+  <body class="flex">
     <div id="container">
-      <div class="box" id="profile"></div>
-      <div class="box"></div>
+      <div class="box flex" id="profileBg">
+        <div class="flex" id="profile">
+          <img src="images/image-jeremy.png" alt="An image of Jeremy" />
+          <div>
+            <p class="mainFont">Report for</p>
+            <h2 class="mainFont nameFont">Jeremy Robson</h2>
+          </div>
+        </div>
+        <div class="flex" id="menu">
+          <p class="mainFont inActive">Daily</p>
+          <p class="mainFont inActive">Weekly</p>
+          <p class="mainFont inActive">Monthly</p>
+        </div>
+      </div>
+      <div class="box statboxContainer" id="work">
+        <div class="statBox">
+          <div>
+            <p class="mainFont titleFont">Work</p>
+            <img src="images/icon-ellipsis.svg" />
+          </div>
+          <div>
+            <p class="mainFont hourFont">32hrs</p>
+            <p class="mainFont">Last week - 36hrs</p>
+          </div>
+        </div>
+      </div>
       <div class="box"></div>
       <div class="box"></div>
       <div class="box"></div>

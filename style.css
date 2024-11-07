@@ -3,22 +3,121 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+.mainFont {
+  font-family: "Rubik", serif;
+  font-size: 18px;
+  font-weight: 300;
+  color: white;
+}
+
+.nameFont {
+  font-size: 40px;
+}
+
+.hourFont {
+  font-size: 50px;
+  font-weight: 400;
+}
+
+.titleFont {
+  font-weight: 500;
+}
+
+.flex {
+  display: flex;
+}
+
 body {
   height: 100vh;
+  justify-content: center;
+  align-items: center;
+  background-color: hsl(226, 43%, 10%);
 }
+
 #container {
   display: grid;
   grid-template: repeat(2, 1fr) / repeat(4, 1fr);
   row-gap: 5.8%;
   column-gap: 2.7%;
-  width: 77%;
+  width: 77.1%;
   aspect-ratio: 2.14;
 }
 
 .box {
-  background-color: black;
+  /* border: 1px solid white; */
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+#profileBg {
+  background-color: hsl(235, 46%, 20%);
+  grid-row: 1 / span 2;
 }
 
 #profile {
-  grid-row: 1 / span 2;
+  background-color: hsl(246, 80%, 60%);
+  flex-direction: column;
+  height: 68.3%;
+  gap: 11.3%;
+  padding: 13.3% 11.4%;
+  border-radius: inherit;
+}
+
+#profile > img {
+  width: 42.9%;
+  aspect-ratio: 1;
+  border-radius: 50px;
+  border: 2px solid white;
+}
+
+#profileBg > div:last-child {
+  flex-direction: column;
+  padding: 0 11.8%;
+  justify-content: center;
+  gap: 12.29%;
+  flex-grow: 1;
+}
+
+#profile p {
+  opacity: 0.5;
+}
+
+.inActive {
+  opacity: 0.5;
+}
+
+#menu p {
+  cursor: pointer;
+}
+
+#work {
+  background: url(images/icon-work.svg) no-repeat 90% -8%;
+  background-color: hsl(15, 100%, 70%);
+}
+
+.statboxContainer {
+  justify-content: end;
+}
+
+.statBox {
+  height: 82%;
+  background-color: hsl(235, 46%, 20%);
+  border-radius: 15px;
+  padding: 11.8%;
+  display: flex;
+  flex-direction: column;
+  gap: 7.5%;
+}
+
+.statBox > div:first-child {
+  display: flex;
+  justify-content: space-between;
+}
+
+.statBox img {
+  width: 8.2%;
+  object-fit: contain;
 }
