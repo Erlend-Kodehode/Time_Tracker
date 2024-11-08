@@ -83,10 +83,11 @@ body {
 
 #profile p {
   opacity: 0.5;
+  font-size: 15px;
 }
 
 .inActive {
-  opacity: 0.5;
+  color: hsl(235, 45%, 61%);
 }
 
 #menu p {
@@ -109,7 +110,7 @@ body {
   padding: 11.8%;
   display: flex;
   flex-direction: column;
-  gap: 7.5%;
+  gap: 12.5%;
 }
 
 .statBox > div:first-child {
@@ -120,4 +121,16 @@ body {
 .statBox img {
   width: 8.2%;
   object-fit: contain;
+}
+
+.statBox > div:last-child {
+  display: flex;
+  flex-direction: column;
+  gap: 1vh;
+}
+
+.lastFont {
+  color: hsl(236, 100%, 87%);
+  font-size: 15px;
+  font-weight: 400;
 }
