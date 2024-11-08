@@ -40,6 +40,7 @@ const activities = [
 const menu = document.querySelector("#menu");
 const menuItems = Array.from(menu.children);
 let activeItem = 0;
+const container = document.querySelector("#container");
 
 menuItems.forEach((e, i) => {
   if (i === activeItem) e.classList.toggle("inActive");
@@ -55,5 +56,72 @@ menuItems.forEach((e, i) => {
     if (i === activeItem) return;
     menuItems[activeItem].classList.toggle("inActive");
     activeItem = i;
+    generateCards(activeItem);
   });
 });
+
+function generateCards(timeFrame) {
+  const cards = Array.from(container.children);
+  cards.forEach((e, i) => {
+    if (i !== 0) e.remove();
+  });
+
+  activities.forEach((e) => {
+    const statboxContainer = document.createElement("div");
+
+    statboxContainer.id = e.title.toLowerCase().replace(" ", "-");
+    statboxContainer.className = "box statboxContainer";
+    container.append(statboxContainer);
+
+    const statbox = document.createElement("div");
+    statbox.className = "statBox";
+    statboxContainer.append(statbox);
+
+    const nameContainer = document.createElement("div");
+    const timeContainer = document.createElement("div");
+    statbox.append(nameContainer, timeContainer);
+
+    const statName = document.createElement("p");
+    statName.textContent = e.title;
+    statName.className = "mainFont titleFont";
+
+    const ellipsis = document.createElementNS(
+      "http://www.w3.org/2000/svg",
+      "svg"
+    );
+    const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+    ellipsis.setAttribute("width", "21");
+    ellipsis.setAttribute("height", "5");
+    ellipsis.setAttribute("viewBox", "0 0 21 5");
+    path.setAttribute(
+      "d",
+      "M2.5 0a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5Zm8 0a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5Zm8 0a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5Z"
+    );
+    ellipsis.append(path);
+    nameContainer.append(statName, ellipsis);
+
+    const currentTime = document.createElement("p");
+    currentTime.className = "mainFont hourFont";
+    const lastTime = document.createElement("p");
+
+    lastTime.className = "mainFont lastFont";
+
+    switch (timeFrame) {
+      case 0:
+        currentTime.textContent = `${e.daily.current}hrs`;
+        lastTime.textContent = `Yesterday - ${e.daily.previous}hrs`;
+        break;
+      case 1:
+        currentTime.textContent = `${e.weekly.current}hrs`;
+        lastTime.textContent = `Last Week - ${e.weekly.previous}hrs`;
+        break;
+      case 2:
+        currentTime.textContent = `${e.monthly.current}hrs`;
+        lastTime.textContent = `Last Month - ${e.monthly.previous}hrs`;
+        break;
+    }
+
+    timeContainer.append(currentTime, lastTime);
+  });
+}
+generateCards(activeItem);

@@ -45,7 +45,6 @@ body {
 }
 
 .box {
-  /* border: 1px solid white; */
   border-radius: 15px;
   display: flex;
   flex-direction: column;
@@ -68,12 +67,11 @@ body {
 
 #profile > img {
   width: 42.9%;
-  aspect-ratio: 1;
   border-radius: 50px;
   border: 2px solid white;
 }
 
-#profileBg > div:last-child {
+#menu {
   flex-direction: column;
   padding: 0 11.8%;
   justify-content: center;
@@ -95,11 +93,37 @@ body {
 }
 
 #work {
-  background: url(images/icon-work.svg) no-repeat 90% -8%;
+  background-image: url(images/icon-work.svg);
   background-color: hsl(15, 100%, 70%);
 }
 
+#play {
+  background-image: url(images/icon-play.svg);
+  background-color: hsl(195, 74%, 62%);
+}
+
+#study {
+  background-image: url(images/icon-study.svg);
+  background-color: hsl(348, 100%, 68%);
+}
+
+#exercise {
+  background-image: url(images/icon-exercise.svg);
+  background-color: hsl(145, 58%, 55%);
+}
+
+#social {
+  background-image: url(images/icon-social.svg);
+  background-color: hsl(264, 64%, 52%);
+}
+
+#self-care {
+  background-image: url(images/icon-self-care.svg);
+  background-color: hsl(43, 84%, 65%);
+}
+
 .statboxContainer {
+  background: no-repeat 90% -8%;
   justify-content: end;
 }
 
@@ -113,14 +137,23 @@ body {
   gap: 12.5%;
 }
 
+.statBox:hover {
+  background-color: hsl(235, 45%, 61%);
+}
+
 .statBox > div:first-child {
   display: flex;
   justify-content: space-between;
 }
 
-.statBox img {
+.statBox svg {
   width: 8.2%;
-  object-fit: contain;
+  fill: #bbc0ff;
+}
+
+.statBox svg:hover {
+  cursor: pointer;
+  fill: white;
 }
 
 .statBox > div:last-child {
@@ -133,4 +166,40 @@ body {
   color: hsl(236, 100%, 87%);
   font-size: 15px;
   font-weight: 400;
+}
+
+@media only screen and (max-width: 376px) {
+  #container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .nameFont {
+    font-size: 22px;
+  }
+
+  #profile {
+    flex-direction: row;
+    padding: 13.3% 9.4%;
+    gap: 6.3%;
+  }
+
+  #profile > img {
+    width: 25.9%;
+    /* height: 100%; */
+    /* object-fit: contain;
+    border-radius: 100px; */
+    /* aspect-ratio: 1; */
+  }
+
+  #profile > div {
+    display: flex;
+    flex-direction: column;
+    gap: 5%;
+    justify-content: center;
+  }
+
+  #menu {
+    flex-direction: row;
+  }
 }
