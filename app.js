@@ -42,49 +42,66 @@ const menuItems = Array.from(menu.children);
 let activeItem = 0;
 const container = document.querySelector("#container");
 
+//generates cards on page load
+generateCards(activeItem);
+
+//loop to add eventlisteners to all the menuItems
 menuItems.forEach((e, i) => {
+  //removes the inActive class from the active item
   if (i === activeItem) e.classList.toggle("inActive");
-  e.addEventListener("mouseenter", () => {
-    if (i === activeItem) return;
-    e.classList.toggle("inActive");
-  });
-  e.addEventListener("mouseleave", () => {
-    if (i === activeItem) return;
-    e.classList.toggle("inActive");
-  });
+
+  //hover effects for the menu items
+  const hover = () => {
+    if (i !== activeItem) e.classList.toggle("inActive");
+  };
+  e.addEventListener("mouseenter", hover);
+  e.addEventListener("mouseleave", hover);
+
+  //click event to change active item
   e.addEventListener("click", () => {
+    //returns if the menu item is the current active item
     if (i === activeItem) return;
+    //adds the inActive class back to the previous active item
     menuItems[activeItem].classList.toggle("inActive");
+    //updates the value of activeItem to be the menu item being clicked
     activeItem = i;
+    //regenerates the cards with the new timeFrame
     generateCards(activeItem);
   });
 });
 
 function generateCards(timeFrame) {
+  //removes the previous cards if there are any
   const cards = Array.from(container.children);
   cards.forEach((e, i) => {
     if (i !== 0) e.remove();
   });
 
+  //creates a card for each activity
   activities.forEach((e) => {
+    //creates the outer container of the card
     const statboxContainer = document.createElement("div");
-
+    //gives the statboxContainer their name as an id and replaces the spaces with "-" if there are any
     statboxContainer.id = e.title.toLowerCase().replace(" ", "-");
     statboxContainer.className = "box statboxContainer";
     container.append(statboxContainer);
 
+    //creates the div with the stats inside
     const statbox = document.createElement("div");
     statbox.className = "statBox";
     statboxContainer.append(statbox);
 
+    //creates to divs to set up the layout of the card
     const nameContainer = document.createElement("div");
     const timeContainer = document.createElement("div");
     statbox.append(nameContainer, timeContainer);
 
+    //name of card
     const statName = document.createElement("p");
     statName.textContent = e.title;
     statName.className = "mainFont titleFont";
 
+    //creates the ellipsis as an inline svg so the fill colour can be changed in css
     const ellipsis = document.createElementNS(
       "http://www.w3.org/2000/svg",
       "svg"
@@ -100,12 +117,14 @@ function generateCards(timeFrame) {
     ellipsis.append(path);
     nameContainer.append(statName, ellipsis);
 
+    //creates the times paragraphs
     const currentTime = document.createElement("p");
     currentTime.className = "mainFont hourFont";
     const lastTime = document.createElement("p");
 
     lastTime.className = "mainFont lastFont";
 
+    //sets the correct times based on the timeframe
     switch (timeFrame) {
       case 0:
         currentTime.textContent = `${e.daily.current}hrs`;
@@ -124,4 +143,3 @@ function generateCards(timeFrame) {
     timeContainer.append(currentTime, lastTime);
   });
 }
-generateCards(activeItem);
