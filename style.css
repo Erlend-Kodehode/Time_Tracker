@@ -169,27 +169,35 @@ body {
 }
 
 @media only screen and (max-width: 376px) {
+  body {
+    align-items: start;
+    padding-top: 20%;
+  }
   #container {
     display: flex;
     flex-direction: column;
+    width: 87.2%;
+    gap: 14.7%;
   }
 
   .nameFont {
     font-size: 22px;
   }
 
+  #profileBg {
+    height: 133%;
+  }
+
   #profile {
     flex-direction: row;
-    padding: 13.3% 9.4%;
+    padding: 9.7% 8.7%;
     gap: 6.3%;
+    height: 65.6%;
   }
 
   #profile > img {
     width: 25.9%;
-    /* height: 100%; */
-    /* object-fit: contain;
-    border-radius: 100px; */
-    /* aspect-ratio: 1; */
+    /* height: 60px; */
   }
 
   #profile > div {
@@ -201,5 +209,27 @@ body {
 
   #menu {
     flex-direction: row;
+    align-items: center;
+    padding: 0;
+  }
+
+  .hourFont {
+    font-size: 30px;
+  }
+
+  .statboxContainer {
+    height: 104.7%;
+  }
+
+  .statBox {
+    height: 75.6%;
+    padding: 10%;
+  }
+
+  .statBox > div:last-child {
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 0;
+    align-items: center;
   }
 }
